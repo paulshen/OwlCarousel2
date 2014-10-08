@@ -425,7 +425,10 @@
 			}
 
 			this.$stage.children('.active').removeClass('active');
-			this.$stage.children(':eq(' + matches.join('), :eq(') + ')').addClass('active');
+			var matchingChildren = this.$stage.children().filter(function(i) {
+				return matches.indexOf(i) !== -1;
+			});
+			matchingChildren.addClass('active');
 
 			if (this.settings.center) {
 				this.$stage.children('.center').removeClass('center');
